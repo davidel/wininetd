@@ -1,25 +1,3 @@
-/*
- *  WinInetd by Davide Libenzi ( Inetd-like daemon for Windows )
- *  Copyright (C) 2003  Davide Libenzi
- *
- *  This program is free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- *  Davide Libenzi <davidel@xmailserver.org>
- *
- */
-
 #include <winsock2.h>
 #include <windows.h>
 #include <tchar.h>
@@ -263,9 +241,9 @@ static char *winet_get_syserror(void) {
 	LPVOID msg;
 	char *emsg;
 
-	FormatMessage( 
-		FORMAT_MESSAGE_ALLOCATE_BUFFER | 
-		FORMAT_MESSAGE_FROM_SYSTEM | 
+	FormatMessage(
+		FORMAT_MESSAGE_ALLOCATE_BUFFER |
+		FORMAT_MESSAGE_FROM_SYSTEM |
 		FORMAT_MESSAGE_IGNORE_INSERTS,
 		NULL,
 		GetLastError(),
@@ -444,7 +422,7 @@ static int winet_serve_client(portmap_t *pm, SOCKET asock, struct sockaddr_in *s
 	}
 
 	WaitForSingleObject(pi.hProcess, INFINITE);
-	
+
 	FreeEnvironmentStrings(env);
 	CloseHandle(si.hStdError);
 	CloseHandle(si.hStdOutput);
